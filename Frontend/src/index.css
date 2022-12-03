@@ -3,6 +3,9 @@
   --fondo: rgb(245, 245, 245);
 }
 *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   /* border: 1px solid red; */
 }
 body{
@@ -17,6 +20,14 @@ body{
 }
 
 .btn-new{
-  top: 100px;
-  right: 100px;
+  top: 90px;
+}
+.margin-nav{
+  margin-top:150px !important;
+}
+
+@media (max-width: 660px) {
+  .form-newPedido{
+    width: 100% !important;
+  }
 }

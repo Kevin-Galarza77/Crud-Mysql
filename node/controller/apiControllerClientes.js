@@ -2,7 +2,6 @@
 import pedidos from "../models/apiModelClientes.js"
 
 //** Métodos para el CRUD **/
-
 //Mostrar todos los registros
 export const getAllClientes = async (req, res) => {
     try {

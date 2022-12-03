@@ -4,17 +4,19 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
+
     const navigate = useNavigate()
 
-    
+
     return (
 
         <div className='height-100vh'>
+            {/* Inicio de la barra de navegacion */}
             <nav className="container-fluid navbar navbar-dark background-primary fixed-top">
                 <div className="container-fluid">
-                    <p className="navbar-brand fs-5" >Yobel SCM</p>
+                    <p className="navbar-brand" >Yobel SCM</p>
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon fs-6"></span>
                     </button>
                     <div className="offcanvas offcanvas-end background-primary" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div className="offcanvas-header">
@@ -35,13 +37,15 @@ const Dashboard = () => {
                     </div>
                 </div>
             </nav>
+            {/* Fin de la barra de navegacion */}
 
-            <div className='h-100 container-fluid d-flex justify-content-center align-items-center'>
+            {/* Inicio de la informacion a usarse */}
+            <div className='container-fluid d-flex justify-content-center align-items-center w-100 margin-nav'>
 
                 <Outlet />
 
             </div>
-
+            {/* Fin de la informacion a usarse */}
         </div>
     )
 }

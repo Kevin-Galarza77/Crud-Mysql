@@ -20,11 +20,7 @@ try {
     console.log(`El error de conexión es: ${error}`)
  
 }
-
-// app.get('/', (req, res)=>{
-//     res.send(`Hola ${a}`)
-// }) 
-
+ 
 app.listen(8088, ()=>{
     console.log('Server UP running in http://localhost:8088/')
 })

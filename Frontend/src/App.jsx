@@ -22,15 +22,6 @@ function App() {
           <Route path="nuevo" element={<NuevoPedido />} />
         </Route>
 
-        {/* 
-
-        <Route path="/pacientes" element={<Dashboard />}>
-          <Route index element={<ListarPedidos />} />
-          <Route path="detalle/:id" element={<MostrarPaciente />} />
-          <Route path="nuevo" element={<NuevoPaciente />} />
-          <Route path="editar/:id" element={<ActualizarPaciente />} />
-        </Route> */}
-
       </Routes>
     </BrowserRouter>
 

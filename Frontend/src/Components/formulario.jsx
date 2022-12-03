@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from "axios";
 
@@ -9,20 +9,22 @@ const Formulario = ({ pedido }) => {
     const navigate = useNavigate()
     const [cliente, setCliente] = useState([])
 
-    const consultarPedidos = async()=>{
+    // Peticion
+    const consultarPedidos = async () => {
         try {
-          const peticion2=await fetch("http://localhost:8088/clientes/");
-          const repuest2a=await peticion2.json();
+            const peticion2 = await fetch("http://localhost:8088/clientes/");
+            const repuest2a = await peticion2.json();
 
-          setCliente(repuest2a);
+            setCliente(repuest2a);
 
-          console.log(repuest2a)
 
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      }
-    
+    }
+
+
+
     const [form, setForm] = useState({
         nombre: pedido?.nombre ?? "",
         id: pedido?.id ?? "",
@@ -32,6 +34,7 @@ const Formulario = ({ pedido }) => {
         fecha: pedido?.fecha ?? ""
     })
 
+    // Actualizar el objeto para guardar los datos cada que se escriba o manipule en form
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -39,14 +42,14 @@ const Formulario = ({ pedido }) => {
         })
     }
 
-
+    // Actualizar o crear nuevo pedido
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (pedido?.id) {
             const url = `http://localhost:8000/pedidos/${pedido.id}`
             await axios.put(url, form)
-        }else{
+        } else {
             const url = `http://localhost:8000/pedidos/`
             await axios.post(url, form)
         }
@@ -57,16 +60,16 @@ const Formulario = ({ pedido }) => {
     useEffect(() => {
 
         consultarPedidos();
-     
-    
-      }, [])
+
+
+    }, [])
 
 
     return (
+        // Inicio del formulario para editar o crear un pedido, dependiento de la necesidad
+        <div className='rounded-lg w-100 d-flex justify-content-center align-items-center form-newPedido'>
 
-        <div className='mt-10 px-5 py-10 rounded-lg container-fluid d-flex justify-content-center align-items-center'>
-
-            <form onSubmit={handleSubmit} className="shadow-lg d-flex justify-content-center align-items-center flex-column p-4 w-50 bg-light">
+            <form onSubmit={handleSubmit} className="shadow-lg d-flex justify-content-center align-items-center w-75 flex-column p-4 bg-light form-newPedido">
                 <div className='d-flex justify-content-between align-items-center w-100'>
                     <label
                         htmlFor='fecha'
@@ -101,31 +104,19 @@ const Formulario = ({ pedido }) => {
                     <select
                         id='dniFK'
                         type="dniFK"
-                        className='form-control m-2 text-end w-50'
+                        className='form-control m-2 text-center w-50'
                         placeholder='DNI del Cliente'
                         name='dniFK'
                         value={form.dniFK}
                         onChange={handleChange} required>
-                            <option value="">Seleccione...</option>
-                            {
-                                cliente.map(e=>(
-                                    <option value={e.dni}>{e.dni}</option>
-                                ))
-                            }
-                        </select>
+                        <option value="">Seleccione...</option>
+                        {
+                            cliente.map(e => (
+                                <option value={e.dni}>{e.dni + " - " + e.nombre}</option>
+                            ))
+                        }
+                    </select>
                 </div>
-                {/* <div className='d-flex justify-content-between align-items-center w-100'>
-                    <label
-                        htmlFor='nombre'
-                        className='fs-6'>Cliente </label>
-                    <select id='nombre'
-                        className='form-control m-2 text-end w-50'
-                        name='nombre'
-                        onChange={handleChange} required>
-                            <option value="">Seleccione...</option>
-                            
-                        </select>
-                </div> */}
                 <div className='d-flex justify-content-between align-items-center w-100'>
                     <label
                         htmlFor='descripcion'

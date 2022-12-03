@@ -8,6 +8,7 @@ const Login = () => {
 
     return (
 
+        // Interfaz de login para que se vea elegantino 
         <div className="d-flex flex-column justify-content-center align-items-center height-100vh container-fluid">
 
             <div className="tab-content">
