@@ -12,13 +12,13 @@ const Dashboard = () => {
         <div className='height-100vh'>
             <nav className="container-fluid navbar navbar-dark background-primary fixed-top">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Offcanvas dark navbar</a>
+                    <p className="navbar-brand fs-5" >Yobel SCM</p>
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="offcanvas offcanvas-end background-primary" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div className="offcanvas-header">
-                            <h5 className="offcanvas-title text-white" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                            <h5 className="offcanvas-title text-white" id="offcanvasDarkNavbarLabel">Yobel SCM</h5>
                             <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <hr className='text-light' />
