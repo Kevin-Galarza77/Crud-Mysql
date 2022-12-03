@@ -1,0 +1,22 @@
+:root{
+  --primary : rgb(172,6,54);
+  --fondo: rgb(245, 245, 245);
+}
+*{
+  /* border: 1px solid red; */
+}
+body{
+  background-color: var(--fondo);
+}
+.height-100vh{
+  height: 100vh;
+}
+
+.background-primary{
+  background-color: var(--primary);
+}
+
+.btn-new{
+  top: 100px;
+  right: 100px;
+}
