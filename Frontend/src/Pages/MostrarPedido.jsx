@@ -16,7 +16,7 @@ const MostrarPedido = () => {
 
                 const peticion = await fetch(`http://localhost:8000/pedidos/${url}`);
                 const repuesta = await peticion.json();
-                const peticion2 = await fetch("http://localhost:8088/clientes/");
+                const peticion2 = await fetch("http://localhost:8000/pedidos/clientes");
                 const repuest2a = await peticion2.json();
 
                 for (let j = 0; j < repuest2a.length; j++) {
@@ -24,7 +24,6 @@ const MostrarPedido = () => {
                         repuesta['nombre'] = repuest2a[j].nombre;
                     }
                 }
-
 
                 setpedido(repuesta);
 

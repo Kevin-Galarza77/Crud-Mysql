@@ -1,24 +1,38 @@
 //importamos el Modelo
-import pedidos from "../models/apiModel.js"
+import  { clienteModel, pedidoModel } from "../models/apiModel.js"
 
 //** Métodos para el CRUD **/
 
-//Mostrar todos los registros
+//Mostrar todos los registros de los pedidos
+
 export const getAllPedidos = async (req, res) => {
     try {
-        const Pedidos = await pedidos.findAll()
+        const Pedidos = await pedidoModel.findAll()
         res.json(Pedidos)
     } catch (error) {
         res.json( {message: error.message} )
     }
 }
+
+//Mostrar todos los registros de los clientes
+export const getAllClientes = async (req, res) => {
+    try {
+        const clientes = await clienteModel.findAll()
+        res.json(clientes)
+    } catch (error) {
+        res.json( {message: error.message} )
+    }
+}
+
+
 //Mostrar un registro
 export const getPedido = async (req, res) => {
         try {
-            const Pedido = await pedidos.findAll({
+            const Pedido = await pedidoModel.findAll({
                 where:{ id:req.params.id }
             })
             res.json(Pedido[0])
+            
         } catch (error) {
             res.json( {message: error.message} )
         }
@@ -26,7 +40,7 @@ export const getPedido = async (req, res) => {
 //Crear un registro
 export const createPedido = async (req, res) => {
     try {
-       await pedidos.create(req.body)
+       await pedidoModel.create(req.body)
        res.json({
            "message":"¡Registro creado correctamente!"
        })
@@ -37,7 +51,7 @@ export const createPedido = async (req, res) => {
 //Actualizar un registro
 export const updatePedido = async (req, res) => {
     try {
-        await pedidos.update(req.body, {
+        await pedidoModel.update(req.body, {
             where: { id: req.params.id}
         })
         res.json({
@@ -50,7 +64,7 @@ export const updatePedido = async (req, res) => {
 //Eliminar un registro
 export const deletePedido = async (req, res) => {
     try {
-        await pedidos.destroy({ 
+        await pedidoModel.destroy({ 
             where: { id : req.params.id }
         })
         res.json({

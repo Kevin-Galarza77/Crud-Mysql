@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Formulario from '../Components/formulario';
 
-const ActualizarPedido = () => {
+const EditarPedido = () => {
+  
   const { id } = useParams()
   let url = id
   const [pedido, setpedido] = useState({})
@@ -15,7 +16,6 @@ const ActualizarPedido = () => {
         const peticion = await fetch(`http://localhost:8000/pedidos/${url}`)
         const respuesta = await peticion.json()
         if (url == respuesta.id) {
-          console.log(respuesta);
           setpedido(respuesta)
         }
       } catch (error) {
@@ -43,4 +43,4 @@ const ActualizarPedido = () => {
   )
 }
 
-export default ActualizarPedido
+export default EditarPedido

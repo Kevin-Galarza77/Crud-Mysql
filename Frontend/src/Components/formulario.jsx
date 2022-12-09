@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
 
 const Formulario = ({ pedido }) => {
+
 
     const navigate = useNavigate()
     const [cliente, setCliente] = useState([])
@@ -12,7 +13,8 @@ const Formulario = ({ pedido }) => {
     // Peticion
     const consultarPedidos = async () => {
         try {
-            const peticion2 = await fetch("http://localhost:8088/clientes/");
+
+            const peticion2 = await fetch("http://localhost:8000/pedidos/clientes");
             const repuest2a = await peticion2.json();
 
             setCliente(repuest2a);
@@ -22,8 +24,6 @@ const Formulario = ({ pedido }) => {
             console.log(error);
         }
     }
-
-
 
     const [form, setForm] = useState({
         nombre: pedido?.nombre ?? "",
@@ -112,7 +112,7 @@ const Formulario = ({ pedido }) => {
                         <option value="">Seleccione...</option>
                         {
                             cliente.map(e => (
-                                <option value={e.dni}>{e.dni + " - " + e.nombre}</option>
+                                <option key={e.dni} value={e.dni}>{e.dni + " - " + e.nombre}</option>
                             ))
                         }
                     </select>

@@ -14,7 +14,7 @@ const ListarPedidos = () => {
     try {
       const peticion = await fetch("http://localhost:8000/pedidos/");
       const repuesta = await peticion.json();
-      const peticion2 = await fetch("http://localhost:8088/clientes/");
+      const peticion2 = await fetch("http://localhost:8000/pedidos/clientes");
       const repuest2a = await peticion2.json();
 
       // Union de ambas tablas para conseguir el nombre del cliente a base del dniFK
